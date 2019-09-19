@@ -6,6 +6,7 @@ const serve = require('rollup-plugin-serve');
 const livereload = require('rollup-plugin-livereload');
 const license = require('rollup-plugin-license');
 const json = require('rollup-plugin-json');
+const babel = require('rollup-plugin-babel');
 const { argv } = require('yargs');
 
 const pkg = require('./package.json');
@@ -20,6 +21,7 @@ const getPlugins = prod => [
   }),
   commonjs(),
   json(),
+  babel(),
   replace({
     __DEV__: prod ? 'false' : 'true',
     'process.env.NODE_ENV': prod ? "'production'" : "'development'"
